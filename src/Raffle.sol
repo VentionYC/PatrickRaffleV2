@@ -6,6 +6,8 @@ import {VRFV2PlusClient} from "@chainlink/contracts/src/v0.8/vrf/dev/libraries/V
 import {VRFConsumerBaseV2Plus} from "@chainlink/contracts/src/v0.8/vrf/dev/VRFConsumerBaseV2Plus.sol";
 
 contract Raffle is VRFConsumerBaseV2Plus{
+
+    error Raffle_NotEnoughEnterFee();
     
     ///////////////////
     //BASIC PARAMETER//
@@ -38,6 +40,7 @@ contract Raffle is VRFConsumerBaseV2Plus{
                 uint256 subscriptionId, 
                 bool useNativeTokenOrNot)
                 VRFConsumerBaseV2Plus(vrfCoordinator) {
+                    
                 i_miniEnterRaffleFee = enterRaffleFee;
                 i_interval = interval;
                 i_keyHashForGasLane = gasLane;
@@ -55,7 +58,7 @@ contract Raffle is VRFConsumerBaseV2Plus{
     ////////////////////////////////////////////////////////////////////////////////////////////////
     function enterRaffle() external payable{
         if(msg.value < i_miniEnterRaffleFee) {
-
+            revert Raffle_NotEnoughEnterFee();
         }else {
             s_palyerList.push(payable(msg.sender));
         }
