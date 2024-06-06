@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.25;
-import {Script} from "forge-std/Script.sol";
+import {Script, console} from "forge-std/Script.sol";
 
 contract HelperConfig is Script{
     uint256 public constant SEPOLIA_CHAIN_ID = 11155111;
@@ -20,6 +20,7 @@ contract HelperConfig is Script{
     NetworkConfig public activeNetWorkConfig;
 
     constructor(){
+        console.log("The current chain id is ", block.chainid);
         if(block.chainid == SEPOLIA_CHAIN_ID){
             activeNetWorkConfig = getSepoliaEthConfig();
         }else{

@@ -1,11 +1,21 @@
 # Raffle 
-## We will using ChainLink VRF2.5 to pick the winner
+## What has already been done????
+### Raffle 
+#### contructor
+        1. Enter Raffle fee
+        2. Time Interval to pick winner
+        3. Fixed Gaslane for VRF
+        4. Fixed VRFCoordiantor for VRF
+        5. Subscription ID for VRF
+        6. Use chain link or not for VRF
+
+    1. Stored enter user
+    2. Chainlink VRF 2.5 to get random number
+      - have the call of "requestRandomWords" --TODO need a method to auto trigger this function--
+      - "requestRandomWords" will trigger "fulfillRandomWords" --TODO need override logic inside--
 
 
 
-# Now I want to complete the get random number and test it on both local and test network
-
-    1. Trigger the requestRandomWords without Chainlink automation
 
 
 

@@ -47,6 +47,8 @@ contract Raffle is VRFConsumerBaseV2Plus{
                 i_subscriptionId = subscriptionId;
                 i_useNativeTokenOrNot = useNativeTokenOrNot;
 
+                s_timestamp = block.timestamp;
+
         
     }
 
@@ -84,5 +86,10 @@ contract Raffle is VRFConsumerBaseV2Plus{
 
     function fulfillRandomWords(uint256 requestId, uint256[] calldata randomWords) internal override{
         
+    }
+
+    //getter function for testing the player list
+    function getPlayerList() public view returns (address payable[] memory) {
+        return s_palyerList;
     }
 }

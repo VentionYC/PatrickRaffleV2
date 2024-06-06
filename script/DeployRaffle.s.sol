@@ -9,7 +9,7 @@ contract DeployRaffle is Script {
         
     }
 
-    function run() public {
+    function run() public returns(Raffle){
 
         vm.startBroadcast();
         //With the real subId, we don't have to have the scrip to -> Create-> Fund
@@ -25,6 +25,8 @@ contract DeployRaffle is Script {
 
             console.log("Raffle deployed at:", address(raffle));
         vm.stopBroadcast();
+
+        return raffle;
     }
 
 }
