@@ -59,7 +59,7 @@ contract Raffle is VRFConsumerBaseV2Plus{
      // external button -> Pay the fee -> the function should be able to receive the fee -> payable//
     ////////////////////////////////////////////////////////////////////////////////////////////////
     function enterRaffle() external payable{
-        if(msg.value < i_miniEnterRaffleFee) {
+        if(msg.value > i_miniEnterRaffleFee) {
             revert Raffle_NotEnoughEnterFee();
         }else {
             s_palyerList.push(payable(msg.sender));
